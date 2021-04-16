@@ -4,6 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 import pandas as pd
 from database import Report
+from visualization import plot
 
 engine = create_engine('sqlite:///db.sqlite3')
 Session = sessionmaker(bind=engine)
@@ -13,6 +14,9 @@ st.title('Global Warming and Climate Change Analysis')
 sidebar = st.sidebar
 
 def viewForm():
+
+    st.plotly_chart(plot())
+
     title = st.text_input("Report Title")
     desc = st.text_area('Report Description')
     btn = st.button("Submit")
