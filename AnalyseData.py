@@ -9,5 +9,10 @@ class Analyse:
     def cleanData(self):
         self.df.drop(columns=[self.df.columns[0]], inplace=True)
 
+    def getDataframe(self):
+        return self.df
+
     def getCategories(self):
         return self.df.groupby('Category').count().sort_values('App')['App'][::-1]
+
+    
